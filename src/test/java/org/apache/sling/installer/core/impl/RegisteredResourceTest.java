@@ -28,6 +28,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.Collections;
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -80,7 +81,7 @@ public class RegisteredResourceTest {
     }
 
 	@org.junit.Test public void testLocalFileCopy() throws Exception {
-	    final File localFile = File.createTempFile("testLocalFileCopy", ".data");
+	    final File localFile = Files.createTempFile("testLocalFileCopy", ".data").toFile();
         localFile.deleteOnExit();
 	    final BundleContext bc = new MockBundleContext();
 	    final File f = getTestBundle("testbundle-1.0.jar");

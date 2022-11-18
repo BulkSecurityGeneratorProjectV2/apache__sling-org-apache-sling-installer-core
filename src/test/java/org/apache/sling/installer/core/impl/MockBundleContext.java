@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.Collection;
 import java.util.Dictionary;
 import java.util.Enumeration;
@@ -128,7 +129,7 @@ public class MockBundleContext implements BundleContext {
                 dir.deleteOnExit();
                 return new File(dir, filename);
             }
-            final File f = File.createTempFile(filename, ".data");
+            final File f = Files.createTempFile(filename, ".data").toFile();
             f.deleteOnExit();
             return f;
         } catch (final IOException ioe) {

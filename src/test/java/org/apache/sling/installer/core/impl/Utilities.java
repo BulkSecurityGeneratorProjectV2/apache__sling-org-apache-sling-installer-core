@@ -21,11 +21,12 @@ package org.apache.sling.installer.core.impl;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.nio.file.Files;
 
 class Utilities {
     
     static File getTestFile() throws IOException {
-        final File result = File.createTempFile(Utilities.class.getName(), null);
+        final File result = Files.createTempFile(Utilities.class.getName(), null).toFile();
         result.deleteOnExit();
         return result;
     }
